@@ -41,7 +41,7 @@ public class CurrencyController {
 	 * @apiNote Example POST http://localhost:5443/currency/USD?amount=1000
 	 */
 	@PostMapping(path = "{currency}")
-	@SaveInFile
+	@SaveInFile(value = "files/currencies.txt") // relative path or empty
 	public ResponseEntity<Map<String, Double>> exchange(@PathVariable CurrencyEnum currency,
 			@RequestParam Integer amount) {
 		return ResponseEntity.ok(this.service.exchange(currency, amount));
