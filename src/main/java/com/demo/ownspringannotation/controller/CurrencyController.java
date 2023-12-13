@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.ownspringannotation.aop.SaveInFile;
 import com.demo.ownspringannotation.service.CurrencyService;
 import com.demo.ownspringannotation.util.CurrencyEnum;
 
@@ -40,6 +41,7 @@ public class CurrencyController {
 	 * @apiNote Example POST http://localhost:5443/currency/USD?amount=1000
 	 */
 	@PostMapping(path = "{currency}")
+	@SaveInFile
 	public ResponseEntity<Map<String, Double>> exchange(@PathVariable CurrencyEnum currency,
 			@RequestParam Integer amount) {
 		return ResponseEntity.ok(this.service.exchange(currency, amount));
